@@ -64,46 +64,46 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Remove any previous error messages and result
-function checkAndSum() {
+const checkAndSum = () => {
   clearError();
   clearResult();
   resetInputBorders();
 
   // Get the input values
-  var inputValue1 = document.getElementById("input1").value;
-  var inputValue2 = document.getElementById("input2").value;
+  const inputValue1 = document.getElementById("input1").value;
+  const inputValue2 = document.getElementById("input2").value;
 
   try {
     // Try to parse the inputs as numbers
-    var numericValue1 = parseFloat(inputValue1);
-    var numericValue2 = parseFloat(inputValue2);
+    const numericValue1 = parseFloat(inputValue1);
+    const numericValue2 = parseFloat(inputValue2);
 
     if (isNaN(numericValue1) || isNaN(numericValue2)) {
       throw new Error("Both inputs must be valid numbers.");
     }
 
     // If both are valid numbers then calculate the sum
-    var sum = numericValue1 + numericValue2;
+    const sum = numericValue1 + numericValue2;
 
     // Display the result on the page
-    displayResult("The sum is: " + sum);
+    displayResult(`The sum is: ${sum}`);
   } catch (error) {
     // If an error occurs, create an element to display the error on the page
-    var errorElement = document.createElement("div");
+    const errorElement = document.createElement("div");
     errorElement.id = "error-message";
     errorElement.style.color = "red";
     errorElement.style.fontSize = "18px";
     errorElement.style.textAlign = "center";
     errorElement.style.fontFamily = "Calibri";
-    errorElement.innerHTML = "<br>" + "Error: " + error.message;
+    errorElement.innerHTML = `<br>Error: ${error.message}`;
 
-    input1.style.border = "2px solid red";
-    input2.style.border = "2px solid red";
+    document.getElementById("input1").style.border = "2px solid red";
+    document.getElementById("input2").style.border = "2px solid red";
 
     // Append the error element to the body
     document.body.appendChild(errorElement);
   }
-}
+};
 
 // Reset input borders to their default state
 function resetInputBorders() {
